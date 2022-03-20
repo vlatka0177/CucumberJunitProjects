@@ -7,9 +7,9 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-    /* Passes pre and post conditions for each scenario and step
-       Import from io.cucumber.java, and not from org.junit */
+    /* Passes pre-conditions and post-conditions for each scenario and step.
 
+    Import from io.cucumber.java, and not from org.junit */
     @Before(order = 1)
     public void SetupScenario() {
 
@@ -24,12 +24,14 @@ public class Hooks {
 
     @Before(value = "@db", order = 0)
     public void setupForDatabaseScenarios() {
+
         System.out.println("====Applies only to scenarios with @db tag");
     }
 
     @After
     public void teardownScenario(Scenario scenario) {
 
+        // scenario.isFailed() --> If scenario fails, this method will return TRUE boolean value
         if (scenario.isFailed()){
 
             byte [] screenshot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
@@ -39,16 +41,18 @@ public class Hooks {
         Driver.closeDriver();
 
         /* System.out.println("====Closing browser using cucumber @After");
-        System.out.println("====Scenario ended/Take screenshot if failed"); */
+           System.out.println("====Scenario ended/Take screenshot if failed"); */
     }
 
     @BeforeStep
     public void setupStep() {
+
         System.out.println("--------> applying setup using @BeforeStep");
     }
 
     @AfterStep
     public void afterStep() {
+
         System.out.println("--------> applying tearDown using @AfterStep");
     }
 }

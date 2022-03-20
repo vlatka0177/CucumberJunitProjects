@@ -21,11 +21,11 @@ public class Driver {
         // Value is null by default
         if (driver == null) {
 
-            /* Browser type is determined from configuration.properties.
-               It controls which browser is opened from outside the code. */
+            // configuration.properties determines which browser is opened from outside the code.
             String browserType = ConfigurationReader.getProperty("browser");
 
-                // Switch statement
+            /* Depending on the browser type from configuration.properties, switch statement will determine the case,
+               and open the matching browser. */
             switch (browserType) {
                     case "chrome":
                         WebDriverManager.chromedriver().setup();
@@ -46,6 +46,7 @@ public class Driver {
             return driver;
         }
 
+        // This method ensures that the driver value is null after using quit() method.
         public static void closeDriver() {
             if (driver != null) {
                 driver.quit(); // Terminates the existing session.

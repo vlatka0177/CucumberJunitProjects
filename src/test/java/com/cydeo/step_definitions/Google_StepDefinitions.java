@@ -29,7 +29,7 @@ public class Google_StepDefinitions {
         String expectedTitle = string+" - Google Search";
         String actualTitle = Driver.getDriver().getTitle();
 
-        //Junit assertion accepts first arg as expected, second arg as actual
+        // Junit assertion accepts first argument as expected, second argument as actual
         Assert.assertEquals("Title is not as expected!",expectedTitle, actualTitle);
     }
 
@@ -39,10 +39,10 @@ public class Google_StepDefinitions {
         String expectedTitle = "apple - Google Search";
         String actualTitle = Driver.getDriver().getTitle();
 
-        //Junit assertion accepts first arg as expected, second arg as actual
+        // Junit assertion accepts first argument as expected, second argument as actual
         Assert.assertEquals("Title is not as expected!",expectedTitle, actualTitle);
 
-        //Assert.assertTrue(actualTitle.equals(expectedTitle));
+        // Assert.assertTrue(actualTitle.equals(expectedTitle));
     }
 
     @When("user is on Google search page")
